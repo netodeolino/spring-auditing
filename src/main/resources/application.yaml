@@ -12,4 +12,4 @@ spring:
       path: /h2
 
 auditing:
-  uri-auth-auditor: /user
+  uri-user-auditor: /user

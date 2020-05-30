@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,15 +17,20 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public ResponseEntity<User> listAll() {
-        return null;
+    public ResponseEntity<List<User>> listAll() {
+        return ResponseEntity.ok(this.userService.findAll());
+    }
+
+    @PostMapping
+    public ResponseEntity<User> save(@RequestBody User user) {
+        return ResponseEntity.ok(this.userService.save(user));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User user) {
+    public ResponseEntity<User> login(@RequestBody User user) {
         Optional<User> optionalUser = this.userService.login(user);
         if (optionalUser.isPresent()) {
-            return ResponseEntity.ok(this.userService.getJWTToken(user.getName()));
+            return ResponseEntity.ok(optionalUser.get());
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }

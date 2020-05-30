@@ -3,14 +3,13 @@ package com.example.auditing.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.AuditorAware;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 public class AuditorAwareImpl implements AuditorAware<String> {
     private static final String USER_AUDITOR = "USER";
+    private static final String UNDEFINED = "UNDEFINED";
 
     @Autowired
     private HttpServletRequest request;
@@ -26,8 +25,11 @@ public class AuditorAwareImpl implements AuditorAware<String> {
             return Optional.ofNullable(USER_AUDITOR);
         }
 
-        return Optional.ofNullable(SecurityContextHolder.getContext())
-                .map(e -> e.getAuthentication())
-                .map(Authentication::getName);
+        return Optional.ofNullable(UNDEFINED);
+
+//        TODO: use this code for get username authenticated in your filter!
+//        return Optional.ofNullable(SecurityContextHolder.getContext())
+//                .map(e -> e.getAuthentication())
+//                .map(Authentication::getName);
     }
 }
