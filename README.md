@@ -8,12 +8,12 @@
 
 ### Book
 <p align="center">
-  <img width="800" height="67" src="https://raw.githubusercontent.com/netodeolino/spring-auditing/master/img/book.png">
+  <img width="750" height="67" src="https://raw.githubusercontent.com/netodeolino/spring-auditing/master/img/book.png">
 </p>
 
 ### User
 <p align="center">
-  <img width="800" height="66" src="https://raw.githubusercontent.com/netodeolino/spring-auditing/master/img/user.png">
+  <img width="750" height="67" src="https://raw.githubusercontent.com/netodeolino/spring-auditing/master/img/user.png">
 </p>
 
 #### Columns
